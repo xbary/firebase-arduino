@@ -5,9 +5,14 @@
 
 // The ordering of these includes matters greatly.
 #include <WiFiClientSecure.h>
+#ifdef ESP32
+#include <WiFi.h>
+#include <HTTPClient.h>
+#endif
+#ifdef ESP8266
 #include <ESP8266WiFi.h>
 #include <ESP8266HTTPClient.h>
-
+#endif
 // Detect whether stable version of HTTP library is installed instead of
 // master branch and patch in missing status and methods.
 #ifndef HTTP_CODE_TEMPORARY_REDIRECT
